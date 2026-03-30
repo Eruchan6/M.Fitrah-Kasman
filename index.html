@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profil Konsultan & Penagihan</title>
+<title>Profil Konsultan</title>
 
 <style>
 * {
@@ -21,11 +21,12 @@ body {
 /* LAYOUT */
 .layout {
     display: flex;
+    justify-content: center;
 }
 
 /* IKLAN */
 .ads {
-    width: 20%;
+    width: 200px;
     padding: 10px;
 }
 
@@ -35,25 +36,26 @@ body {
     margin-bottom: 15px;
 }
 
-/* KONTEN */
+/* MAIN */
 .main {
-    width: 60%;
+    width: 100%;
+    max-width: 900px;
 }
 
 /* HERO */
 .hero {
     text-align: center;
-    padding: 60px 20px;
-    background: linear-gradient(135deg, #1e293b, #0f172a);
+    padding: 70px 20px;
+    background: linear-gradient(135deg, #1e293b, #020617);
 }
 
 .hero h1 {
-    font-size: 30px;
+    font-size: 32px;
 }
 
 .hero p {
+    color: #94a3b8;
     margin-top: 10px;
-    color: #cbd5e1;
 }
 
 /* SECTION */
@@ -64,49 +66,63 @@ body {
 /* CARD */
 .card {
     background: #1e293b;
-    padding: 20px;
-    border-radius: 12px;
+    padding: 25px;
+    border-radius: 15px;
     margin-bottom: 20px;
-    line-height: 1.6;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
 }
 
 /* PROFIL */
 .nama {
-    font-size: 22px;
+    font-size: 24px;
     color: #22c55e;
-    margin-top: 10px;
 }
 
 /* SLIDER */
 .slider {
-    display: flex;
-    overflow-x: auto;
-    gap: 10px;
+    overflow: hidden;
     margin-top: 20px;
-    padding-bottom: 10px;
+}
+
+.slider-track {
+    display: flex;
+    gap: 10px;
+    animation: jalan 25s linear infinite;
 }
 
 .slider img {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     object-fit: cover;
     border-radius: 10px;
-    flex-shrink: 0;
-    transition: 0.3s;
 }
 
-.slider img:hover {
-    transform: scale(1.1);
+/* ANIMASI */
+@keyframes jalan {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
-/* SCROLLBAR */
-.slider::-webkit-scrollbar {
-    height: 6px;
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
 }
 
-.slider::-webkit-scrollbar-thumb {
+/* BUTTON */
+.btn {
+    display: inline-block;
     background: #22c55e;
+    padding: 12px 20px;
     border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    margin-top: 10px;
 }
 
 /* CONTACT */
@@ -115,25 +131,30 @@ body {
     background: #25D366;
     padding: 12px;
     margin: 10px auto;
-    width: 220px;
+    width: 230px;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 10px;
     text-decoration: none;
     color: white;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+
     .layout {
         flex-direction: column;
     }
 
     .ads {
-        width: 100%;
+        display: none;
     }
 
-    .main {
-        width: 100%;
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 24px;
     }
 }
 </style>
@@ -149,114 +170,111 @@ body {
         <img src="photo_2026-03-30_23-41-48.jpg">
         <img src="photo_2026-03-30_23-41-52.jpg">
         <img src="photo_2026-03-30_23-41-56.jpg">
-
     </div>
 
-    <!-- KONTEN -->
+    <!-- MAIN -->
     <div class="main">
 
         <!-- HERO -->
         <div class="hero">
-            <h1>Jasa Konsultan & Penagihan Profesional</h1>
-            <p>Solusi terpercaya untuk kebutuhan keuangan, penagihan, dan operasional lapangan</p>
+            <h1>Jasa Pengawal Pribadi & Debt Collector</h1>
+            <p>Profesional • Cepat • Terpercaya</p>
         </div>
 
         <!-- PROFIL -->
         <div class="section">
-            <div class="card" style="text-align:center;">
-
-                <h2>Profil</h2>
+            <div class="card" style="text-align:center">
 
                 <div class="nama">M. Fitrah Kasman</div>
+                <p>Debt Collector • Driver • Pengawal Pribadi • Konsultan Lapangan</p>
 
-                <p>
-                Debt Collector • Driver • Pengawal Pribadi • Konsultan Lapangan
-                </p>
-
-                <p style="margin-top:10px; font-size:12px; color:#94a3b8;">
-                    Geser untuk melihat dokumentasi ➡️
-                </p>
-
-                <!-- SLIDER -->
+                <!-- SLIDER AUTO -->
                 <div class="slider">
-                    <img src="art1.jpg">
-                    <img src="art2.jpg">
-                    <img src="art3.jpg">
-                    <img src="art4.jpg">
-                    <img src="art5.jpg">
-                    <img src="art6.jpg">
-                    <img src="art7.jpg">
-                    <img src="art8.jpg">
-                    <img src="art9.jpg">
+                    <div class="slider-track">
+
+                        <img src="art1.jpg">
+                        <img src="art2.jpg">
+                        <img src="art3.jpg">
+                        <img src="art4.jpg">
+                        <img src="art5.jpg">
+                        <img src="art6.jpg">
+                        <img src="art7.jpg">
+                        <img src="art8.jpg">
+                        <img src="art9.jpg">
+
+                        <!-- DUPLIKAT -->
+                        <img src="art1.jpg">
+                        <img src="art2.jpg">
+                        <img src="art3.jpg">
+                        <img src="art4.jpg">
+                        <img src="art5.jpg">
+                        <img src="art6.jpg">
+                        <img src="art7.jpg">
+                        <img src="art8.jpg">
+                        <img src="art9.jpg">
+
+                    </div>
                 </div>
 
-                <br>
-
-                <p>
-                Profesional berpengalaman dalam bidang penagihan, pengawalan, dan pendampingan operasional.
-                Mengutamakan hasil nyata, komunikasi efektif, serta kepercayaan dalam setiap pekerjaan.
+                <p style="margin-top:15px;">
+                Berpengalaman dalam Segala Bidang penagihan dan operasional lapangan dengan hasil nyata.
                 </p>
 
             </div>
         </div>
 
-        <!-- DESKRIPSI -->
+        <!-- LAYANAN -->
         <div class="section">
+            <div class="grid">
 
-    <div class="card">
-        <h2>💰 Pembiayaan Dana</h2>
-        <p>
-        Menyediakan solusi pembiayaan untuk kebutuhan usaha maupun proyek besar.
+                <div class="card">
+                    <h3>💰 Pembiayaan Dana</h3>
+                
+                    <p>Menyediakan solusi pembiayaan untuk kebutuhan usaha maupun proyek besar.
         Proses dilakukan secara cepat dengan sistem yang jelas dan terarah,
-        sehingga memudahkan klien dalam mendapatkan dana yang dibutuhkan.
-        </p>
-    </div>
+        sehingga memudahkan klien dalam mendapatkan dana yang dibutuhkan</p>
+                </div>
 
-    <div class="card">
-        <h2>📄 Penagihan Hutang</h2>
-        <p>
-        Membantu proses penagihan hutang macet baik untuk perusahaan maupun
+                <div class="card">
+                    <h3>📄 Penagihan Hutang</h3>
+                    <p>Membantu proses penagihan hutang macet baik untuk perusahaan maupun
         perorangan. Penanganan dilakukan secara profesional dengan pendekatan
-        komunikasi yang efektif dan terstruktur.
-        </p>
-    </div>
+        komunikasi yang efektif dan terstruktur.</p>
+                </div>
 
-    <div class="card">
-        <h2>⚖️ Konsultan Hukum</h2>
-        <p>
-        Memberikan pendampingan dalam penyelesaian masalah hukum yang berkaitan
-        dengan keuangan dan bisnis, hingga mencapai hasil yang optimal dan tuntas.
-        </p>
-    </div>
+                <div class="card">
+                    <h3>⚖️ Konsultan Hukum</h3>
+                    <p>Memberikan pendampingan dalam penyelesaian masalah hukum yang berkaitan
+        dengan keuangan dan bisnis, hingga mencapai hasil yang optimal dan tuntas.</p>
+                </div>
 
-    <div class="card">
-        <h2>🚗 Driver & Pengawal Pribadi</h2>
-        <p>
-        Menyediakan layanan driver sekaligus pengawalan pribadi untuk menunjang
-        mobilitas dan keamanan, baik dalam kota maupun luar kota.
-        </p>
-    </div>
+                <div class="card">
+                    <h3>🚗 Driver & Pengawal Pribadi</h3>
+                    <p>Menyediakan layanan driver sekaligus pengawalan pribadi untuk menunjang
+        mobilitas dan keamanan, baik dalam kota maupun luar kota.</p>
+                </div>
 
-</div>
+                <div class="card">
+                    <h3>📍 Area Layanan</h3>
+                    <p>Melayani wilayah <b>Jakarta, Bogor, Depok, Tangerang, dan Bekasi (Jabodetabek)</b>.Dan Luar Kota Luar Daerah (Luar Pulai Jawa).
+        Siap bekerja di dalam kota maupun luar kota sesuai kebutuhan klien.</p>
+                </div>
+
+            </div>
+        </div>
 
         <!-- PROMO -->
         <div class="section">
-            <div class="card" style="text-align:center;">
+            <div class="card" style="text-align:center">
 
-                <h2>Promo Produk</h2>
+                <h2>Promo</h2>
 
-                <img src="photo_2026-03-30_23-41-25.jpg" style="width:200px; margin:10px; border-radius:10px;">
-                <img src="photo_2026-03-30_23-50-00.jpg" style="width:200px; margin:10px; border-radius:10px;">
+                <img src="photo_2026-03-30_23-41-25.jpg" style="width:180px; border-radius:10px;">
+                <img src="photo_2026-03-30_23-50-00.jpg" style="width:180px; border-radius:10px;">
 
-                <p>
-                Air Minum PH Tinggi IZAURA untuk menjaga kesehatan dan stamina tubuh.
-                <br><br>
-                Tersedia juga layanan Laundry Self Service yang praktis dan efisien.
-                </p>
+                <p>Air IZAURA & Laundry Self Service tersedia.</p>
 
-                <br>
-
-                <a href="https://wa.me/6281281198570">Order Sekarang</a>
+                <a href="https://wa.me/6281281198570" class="btn">Order</a>
 
             </div>
         </div>
@@ -267,8 +285,6 @@ body {
 
             <a href="https://wa.me/6281281198570">081281198570</a>
             <a href="https://wa.me/6281314212585">081314212585</a>
-            <a href="https://wa.me/6287711049685">087711049685</a>
-            <a href="https://wa.me/6281384718174">081384718174</a>
 
         </div>
 
