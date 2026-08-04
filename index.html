@@ -1,308 +1,444 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profil Konsultan</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M. Fitrah Kasman - Jasa Pengawal Pribadi & Konsultan Lapangan</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <style>
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: #151c2c;
+            --bg-card-hover: #1e293b;
+            --accent-green: #10b981;
+            --accent-green-hover: #059669;
+            --accent-wa: #25D366;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --max-width: 1000px;
+        }
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #0f172a;
-    color: white;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* LAYOUT */
-.layout {
-    display: flex;
-    justify-content: center;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
 
-/* IKLAN */
-.ads {
-    width: 200px;
-    padding: 10px;
-}
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-.ads img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: radial-gradient(circle at top, #1e293b 0%, var(--bg-main) 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
 
-/* MAIN */
-.main {
-    width: 100%;
-    max-width: 900px;
-}
+        .hero-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
 
-/* HERO */
-.hero {
-    text-align: center;
-    padding: 70px 20px;
-    background: linear-gradient(135deg, #1e293b, #020617);
-}
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
 
-.hero h1 {
-    font-size: 32px;
-}
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-.hero p {
-    color: #94a3b8;
-    margin-top: 10px;
-}
+        /* SECTION STYLING */
+        .section {
+            padding: 50px 0;
+        }
 
-/* SECTION */
-.section {
-    padding: 30px 20px;
-}
+        .section-title {
+            text-align: center;
+            font-size: 1.75rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
 
-/* CARD */
-.card {
-    background: #1e293b;
-    padding: 25px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    transition: 0.3s;
-}
+        /* PROFILE CARD */
+        .profile-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
 
-.card:hover {
-    transform: translateY(-5px);
-}
+        .profile-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 8px;
+        }
 
-/* PROFIL */
-.nama {
-    font-size: 24px;
-    color: #22c55e;
-}
+        .profile-title {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
 
-/* SLIDER */
-.slider {
-    overflow: hidden;
-    margin-top: 20px;
-}
+        /* INFINITE SLIDER */
+        .slider {
+            overflow: hidden;
+            position: relative;
+            margin: 25px 0;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px 0;
+        }
 
-.slider-track {
-    display: flex;
-    gap: 10px;
-    animation: jalan 25s linear infinite;
-}
+        .slider::before,
+        .slider::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
 
-.slider img {
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    border-radius: 10px;
-}
+        .slider::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-card), transparent);
+        }
 
-/* ANIMASI */
-@keyframes jalan {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
+        .slider::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-card), transparent);
+        }
 
-/* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
+        .slider-track {
+            display: flex;
+            gap: 15px;
+            width: max-content;
+            animation: scroll 30s linear infinite;
+        }
 
-/* BUTTON */
-.btn {
-    display: inline-block;
-    background: #22c55e;
-    padding: 12px 20px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: white;
-    margin-top: 10px;
-}
+        .slider-track:hover {
+            animation-play-state: paused;
+        }
 
-/* CONTACT */
-.contact a {
-    display: block;
-    background: #25D366;
-    padding: 12px;
-    margin: 10px auto;
-    width: 230px;
-    text-align: center;
-    border-radius: 10px;
-    text-decoration: none;
-    color: white;
-}
+        .slider img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
-    .layout {
-        flex-direction: column;
-    }
+        /* SERVICES GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
 
-    .ads {
-        display: none;
-    }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 28px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
 
-    .grid {
-        grid-template-columns: 1fr;
-    }
+        .card:hover {
+            transform: translateY(-5px);
+            background: var(--bg-card-hover);
+            border-color: rgba(16, 185, 129, 0.4);
+        }
 
-    .hero h1 {
-        font-size: 24px;
-    }
-}
-</style>
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* PROMO SECTION */
+        .promo-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #1e1b4b 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .promo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .promo-gallery img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* BUTTONS & CONTACT */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--accent-green);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--accent-green-hover);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .contact-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn-wa {
+            background: var(--accent-wa);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .btn-wa:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .profile-card, .promo-card {
+                padding: 20px;
+            }
+
+            .contact-group {
+                flex-direction: column;
+            }
+
+            .btn-wa {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="layout">
-
-    <!-- IKLAN KIRI -->
-    <div class="ads">
-        <img src="photo_2026-03-30_23-41-25.jpg">
-        <img src="photo_2026-03-30_23-41-48.jpg">
-        <img src="photo_2026-03-30_23-41-52.jpg">
-        <img src="photo_2026-03-30_23-41-56.jpg">
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="container">
+            <span class="hero-badge">Layanan Profesional & Terpercaya</span>
+            <h1>Jasa Pengawal Pribadi & Debt Collector</h1>
+            <p>Solusi Cepat, Tepat, dan Hasil Nyata untuk Kebutuhan Pengamanan & Penagihan Lapangan</p>
+        </div>
     </div>
 
-    <!-- MAIN -->
-    <div class="main">
+    <div class="container">
 
-        <!-- HERO -->
-        <div class="hero">
-            <h1>Jasa Pengawal Pribadi & Debt Collector</h1>
-            <p>Profesional • Cepat • Terpercaya</p>
-        </div>
+        <!-- PROFIL KONSULTAN -->
+        <section class="section">
+            <div class="profile-card">
+                <div class="profile-name">M. Fitrah Kasman</div>
+                <div class="profile-title">Debt Collector • Driver • Pengawal Pribadi • Konsultan Lapangan</div>
 
-        <!-- PROFIL -->
-        <div class="section">
-            <div class="card" style="text-align:center">
-
-                <div class="nama">M. Fitrah Kasman</div>
-                <p>Debt Collector • Driver • Pengawal Pribadi • Konsultan Lapangan</p>
-
-                <!-- SLIDER AUTO -->
+                <!-- SLIDER DOKUMENTASI -->
                 <div class="slider">
                     <div class="slider-track">
-
-                        <img src="art1.jpg">
-                        <img src="art2.jpg">
-                        <img src="art3.jpg">
-                        <img src="art4.jpg">
-                        <img src="art5.jpg">
-                        <img src="art6.jpg">
-                        <img src="art7.jpg">
-                        <img src="art8.jpg">
-                        <img src="art9.jpg">
-
-                        <!-- DUPLIKAT -->
-                        <img src="art1.jpg">
-                        <img src="art2.jpg">
-                        <img src="art3.jpg">
-                        <img src="art4.jpg">
-                        <img src="art5.jpg">
-                        <img src="art6.jpg">
-                        <img src="art7.jpg">
-                        <img src="art8.jpg">
-                        <img src="art9.jpg">
-
+                        <img src="art1.jpg" alt="Dokumentasi 1">
+                        <img src="art2.jpg" alt="Dokumentasi 2">
+                        <img src="art3.jpg" alt="Dokumentasi 3">
+                        <img src="art4.jpg" alt="Dokumentasi 4">
+                        <img src="art5.jpg" alt="Dokumentasi 5">
+                        <img src="art6.jpg" alt="Dokumentasi 6">
+                        <img src="art7.jpg" alt="Dokumentasi 7">
+                        <img src="art8.jpg" alt="Dokumentasi 8">
+                        <img src="art9.jpg" alt="Dokumentasi 9">
+                        
+                        <!-- DUPLIKAT UNTUK ANIMASI SEAMLESS LOOP -->
+                        <img src="art1.jpg" alt="Dokumentasi 1">
+                        <img src="art2.jpg" alt="Dokumentasi 2">
+                        <img src="art3.jpg" alt="Dokumentasi 3">
+                        <img src="art4.jpg" alt="Dokumentasi 4">
+                        <img src="art5.jpg" alt="Dokumentasi 5">
+                        <img src="art6.jpg" alt="Dokumentasi 6">
+                        <img src="art7.jpg" alt="Dokumentasi 7">
+                        <img src="art8.jpg" alt="Dokumentasi 8">
+                        <img src="art9.jpg" alt="Dokumentasi 9">
                     </div>
                 </div>
 
-                <p style="margin-top:15px;">
-                Berpengalaman dalam Segala Bidang penagihan dan operasional lapangan dengan hasil nyata.
+                <p style="color: var(--text-muted); font-size: 0.95rem;">
+                    Berpengalaman dalam segala bidang penagihan serta operasional pengawasan dan pengawalan lapangan dengan rekam jejak yang dapat diandalkan.
                 </p>
-
             </div>
-        </div>
+        </section>
 
-        <!-- LAYANAN -->
-        <div class="section">
+        <!-- LAYANAN KAMI -->
+        <section class="section">
+            <h2 class="section-title">Layanan Utama</h2>
             <div class="grid">
 
                 <div class="card">
                     <h3>💰 Pembiayaan Dana</h3>
-                
-                    <p>Menyediakan solusi pembiayaan untuk kebutuhan usaha maupun proyek besar.
-        Proses dilakukan secara cepat dengan sistem yang jelas dan terarah,
-        sehingga memudahkan klien dalam mendapatkan dana yang dibutuhkan</p>
+                    <p>Menyediakan solusi pembiayaan untuk kebutuhan usaha maupun proyek besar secara cepat dengan sistem yang jelas, terarah, dan transparan.</p>
                 </div>
 
                 <div class="card">
                     <h3>📄 Penagihan Hutang</h3>
-                    <p>Membantu proses penagihan hutang macet baik untuk perusahaan maupun
-        perorangan. Penanganan dilakukan secara profesional dengan pendekatan
-        komunikasi yang efektif dan terstruktur.</p>
+                    <p>Pendampingan penagihan hutang macet perorangan maupun perusahaan secara profesional dengan pendekatan komunikasi yang efektif dan terstruktur.</p>
                 </div>
 
                 <div class="card">
                     <h3>⚖️ Konsultan Hukum</h3>
-                    <p>Memberikan pendampingan dalam penyelesaian masalah hukum yang berkaitan
-        dengan keuangan dan bisnis, hingga mencapai hasil yang optimal dan tuntas.</p>
+                    <p>Pendampingan dan konsultasi dalam penyelesaian masalah hukum bisnis dan keuangan hingga mencapai hasil yang tuntas dan optimal.</p>
                 </div>
 
                 <div class="card">
-                    <h3>🚗 Driver & Pengawal Pribadi</h3>
-                    <p>Menyediakan layanan driver sekaligus pengawalan pribadi untuk menunjang
-        mobilitas dan keamanan, baik dalam kota maupun luar kota.</p>
+                    <h3>🚗 Driver & Pengawal</h3>
+                    <p>Layanan driver eksekutif sekaligus pengawalan pribadi (*bodyguard*) untuk menunjang mobilitas dan keamanan diri dalam serta luar kota.</p>
                 </div>
 
-                <div class="card">
-                    <h3>📍 Area Layanan</h3>
-                    <p>Melayani wilayah <b>Jakarta, Bogor, Depok, Tangerang, dan Bekasi (Jabodetabek)</b>.Dan Luar Kota Luar Daerah (Luar Pulai Jawa).
-        Siap bekerja di dalam kota maupun luar kota sesuai kebutuhan klien.</p>
+                <div class="card" style="grid-column: 1 / -1;">
+                    <h3>📍 Jangkauan Area Layanan</h3>
+                    <p>Melayani wilayah operasional <b>Jabodetabek (Jakarta, Bogor, Depok, Tangerang, Bekasi)</b> serta penugasan khusus ke <b>Luar Kota / Luar Pulau Jawa</b> sesuai dengan kebutuhan klien.</p>
                 </div>
 
             </div>
-        </div>
+        </section>
 
-        <!-- PROMO -->
-        <div class="section">
-            <div class="card" style="text-align:center">
+        <!-- PROMO & UNIT USAHALAIN -->
+        <section class="section">
+            <div class="promo-card">
+                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">Layanan Usaha Lainnya</h2>
+                <p style="color: var(--text-muted);">Tersedia Air Minum Kesehatan IZAURA & Laundry Self Service</p>
 
-                <h2>Promo</h2>
+                <div class="promo-gallery">
+                    <img src="photo_2026-03-30_23-41-25.jpg" alt="Promo 1">
+                    <img src="photo_2026-03-30_23-41-48.jpg" alt="Promo 2">
+                    <img src="photo_2026-03-30_23-41-52.jpg" alt="Promo 3">
+                    <img src="photo_2026-03-30_23-50-00.jpg" alt="Promo 4">
+                    <img src="photo_2026-03-30_23-50-03.jpg" alt="Promo 5">
+                    <img src="photo_2026-03-30_23-49-56.jpg" alt="Promo 6">
+                </div>
 
-                <img src="photo_2026-03-30_23-41-25.jpg" style="width:180px; border-radius:10px;">
-                <img src="photo_2026-03-30_23-41-48.jpg" style="width:180px; border-radius:10px;">
-                <img src="photo_2026-03-30_23-41-52.jpg" style="width:180px; border-radius:10px;">
-                <img src="photo_2026-03-30_23-50-00.jpg" style="width:180px; border-radius:10px;">
-                <img src="photo_2026-03-30_23-50-03.jpg" style="width:180px; border-radius:10px;">
-                <img src="photo_2026-03-30_23-49-56.jpg" style="width:180px; border-radius:10px;">
-
-                <p>Air IZAURA & Laundry Self Service tersedia.</p>
-
-                <a href="https://wa.me/6281281198570" class="btn">Order</a>
-
+                <a href="https://wa.me/6281281198570" class="btn" target="_blank">Pesan Sekarang</a>
             </div>
-        </div>
+        </section>
 
         <!-- KONTAK -->
-        <div class="section contact">
-            <h2>Kontak</h2>
+        <section class="section">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 20px;">
+                Konsultasikan kebutuhan Anda langsung melalui WhatsApp
+            </p>
+            <div class="contact-group">
+                <a href="https://wa.me/6281281198570" class="btn-wa" target="_blank">
+                    📱 WhatsApp 1 (0812-8119-8570)
+                </a>
+                <a href="https://wa.me/6281314212585" class="btn-wa" target="_blank">
+                    📱 WhatsApp 2 (0813-1421-2585)
+                </a>
+            </div>
+        </section>
 
-            <a href="https://wa.me/6281281198570">081281198570</a>
-            <a href="https://wa.me/6281314212585">081314212585</a>
+    </div>
 
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 M. Fitrah Kasman. All Rights Reserved.</p>
         </div>
-
-    </div>
-
-    <!-- IKLAN KANAN -->
-    <div class="ads">
-        <img src="photo_2026-03-30_23-49-53.jpg">
-        <img src="photo_2026-03-30_23-49-56.jpg">
-        <img src="photo_2026-03-30_23-50-00.jpg">
-        <img src="photo_2026-03-30_23-50-03.jpg">
-    </div>
-
-</div>
+    </footer>
 
 </body>
 </html>
