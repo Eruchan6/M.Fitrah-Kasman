@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>M. Fitrah Kasman - Jasa Pengawal Pribadi & Konsultan Lapangan</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,14 +12,13 @@
     <style>
         :root {
             --bg-main: #090a0f;
-            --bg-card: rgba(20, 24, 33, 0.7);
-            --bg-card-hover: rgba(30, 36, 50, 0.85);
+            --bg-card: rgba(20, 24, 33, 0.75);
+            --bg-card-hover: rgba(30, 36, 50, 0.9);
             --gold-primary: #d4af37;
             --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
-            --gold-border: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.1));
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
-            --border-subtle: rgba(212, 175, 55, 0.15);
+            --border-subtle: rgba(212, 175, 55, 0.18);
             --accent-wa: #25D366;
             --max-width: 1000px;
         }
@@ -28,30 +27,33 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; /* Hilangkan kotak biru/abu saat ditekan di HP */
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-main);
             color: var(--text-main);
             line-height: 1.6;
-            padding-bottom: 60px;
+            padding-bottom: calc(40px + env(safe-area-inset-bottom)); /* Support Notch iPhone */
             background-image: 
                 radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
                 radial-gradient(circle at 80% 100%, rgba(212, 175, 55, 0.04) 0%, transparent 50%);
             background-attachment: fixed;
+            overflow-x: hidden;
         }
 
         .container {
+            width: 100%;
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 16px;
         }
 
-        /* TYPOGRAPHY */
+        /* TYPOGRAPHY RESPONSIVE */
         h1, h2, h3, .brand-name {
             font-family: 'Cinzel', serif;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.02em;
         }
 
         .gold-text {
@@ -63,36 +65,37 @@
         /* HERO SECTION */
         .hero {
             text-align: center;
-            padding: 90px 20px 70px;
+            padding: 50px 16px 40px;
             position: relative;
             border-bottom: 1px solid var(--border-subtle);
         }
 
         .hero-badge {
             display: inline-block;
-            background: rgba(212, 175, 55, 0.08);
+            background: rgba(212, 175, 55, 0.1);
             color: var(--gold-primary);
-            padding: 6px 20px;
+            padding: 6px 16px;
             border-radius: 30px;
-            font-size: 0.8rem;
+            font-size: clamp(0.7rem, 2.5vw, 0.8rem);
             font-weight: 600;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             border: 1px solid rgba(212, 175, 55, 0.3);
+            -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: clamp(1.6rem, 5vw, 2.8rem);
             font-weight: 700;
-            margin-bottom: 16px;
-            line-height: 1.2;
+            margin-bottom: 14px;
+            line-height: 1.25;
         }
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.8vw, 1.1rem);
             max-width: 650px;
             margin: 0 auto;
             font-weight: 300;
@@ -100,23 +103,23 @@
 
         /* SECTION STYLING */
         .section {
-            padding: 55px 0;
+            padding: 35px 0;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 35px;
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            margin-bottom: 25px;
             position: relative;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 50px;
+            width: 40px;
             height: 2px;
             background: var(--gold-gradient);
-            margin: 12px auto 0;
+            margin: 10px auto 0;
         }
 
         /* LUXURY CARDS */
@@ -124,42 +127,44 @@
             background: var(--bg-card);
             border: 1px solid var(--border-subtle);
             border-radius: 16px;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             position: relative;
             overflow: hidden;
         }
 
         /* PROFILE CARD */
         .profile-card {
-            padding: 40px 30px;
+            padding: 24px 16px;
             text-align: center;
         }
 
         .profile-name {
-            font-size: 2.2rem;
+            font-size: clamp(1.5rem, 4.5vw, 2.2rem);
             font-weight: 700;
             margin-bottom: 6px;
         }
 
         .profile-title {
             color: var(--gold-primary);
-            font-size: 0.95rem;
-            letter-spacing: 0.1em;
+            font-size: clamp(0.75rem, 2.5vw, 0.95rem);
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             font-weight: 600;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
-        /* INFINITE SLIDER */
+        /* INFINITE SLIDER OPTIMIZATION FOR TOUCH SCREEN */
         .slider {
             overflow: hidden;
             position: relative;
-            margin: 30px 0;
+            margin: 20px 0;
             border-radius: 12px;
-            padding: 12px 0;
+            padding: 10px 0;
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.03);
+            touch-action: pan-y;
         }
 
         .slider::before,
@@ -167,7 +172,7 @@
             content: "";
             position: absolute;
             top: 0;
-            width: 70px;
+            width: 35px;
             height: 100%;
             z-index: 2;
             pointer-events: none;
@@ -185,27 +190,23 @@
 
         .slider-track {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             width: max-content;
-            animation: scroll 35s linear infinite;
+            animation: scroll 30s linear infinite;
         }
 
-        .slider-track:hover {
+        /* Pause slider when touched/hovered */
+        .slider-track:hover,
+        .slider-track:active {
             animation-play-state: paused;
         }
 
         .slider img {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             object-fit: cover;
             border-radius: 8px;
             border: 1px solid var(--border-subtle);
-            filter: brightness(0.9);
-            transition: filter 0.3s;
-        }
-
-        .slider img:hover {
-            filter: brightness(1.1);
         }
 
         @keyframes scroll {
@@ -216,31 +217,24 @@
         /* GRID LAYOUTS */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 22px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
         }
 
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
         }
 
         .card {
-            padding: 32px 28px;
-            transition: all 0.4s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            background: var(--bg-card-hover);
-            border-color: rgba(212, 175, 55, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+            padding: 24px 20px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 14px;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
             color: #ffffff;
             display: flex;
             align-items: center;
@@ -249,16 +243,16 @@
 
         .card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 300;
         }
 
-        /* WHY US / KEUNGGULAN */
+        /* KEUNGGULAN / FEATURES */
         .feature-item {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 14px;
+            margin-bottom: 18px;
         }
 
         .feature-item:last-child {
@@ -266,11 +260,11 @@
         }
 
         .feature-icon {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             background: rgba(212, 175, 55, 0.1);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            width: 48px;
-            height: 48px;
+            width: 42px;
+            height: 42px;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -278,23 +272,23 @@
             flex-shrink: 0;
         }
 
-        /* STEPS / WORKFLOW */
+        /* WORKFLOW / STEPS */
         .step-box {
             text-align: center;
-            padding: 25px 20px;
+            padding: 20px 16px;
         }
 
         .step-number {
             font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--gold-primary);
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
 
-        /* PROMO / BISNIS PISAH (2 COLUMN) */
+        /* PROMO SECTION */
         .promo-box {
-            padding: 30px;
+            padding: 24px 18px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -305,107 +299,120 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
+            gap: 8px;
+            margin: 16px 0;
         }
 
         .promo-gallery img {
-            width: 95px;
-            height: 95px;
+            width: calc(33.33% - 6px);
+            max-width: 100px;
+            aspect-ratio: 1/1;
             object-fit: cover;
             border-radius: 8px;
             border: 1px solid var(--border-subtle);
-            transition: transform 0.3s;
         }
 
-        .promo-gallery img:hover {
-            transform: scale(1.05);
-        }
-
-        /* BUTTONS */
+        /* BUTTONS OPTIMIZED FOR FINGERS */
         .btn-gold {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             background: var(--gold-gradient);
             color: #000;
-            padding: 12px 28px;
-            border-radius: 8px;
+            padding: 14px 20px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 700;
             font-size: 0.85rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
             width: 100%;
+            min-height: 48px;
         }
 
-        .btn-gold:hover {
+        .btn-gold:active {
+            transform: scale(0.98);
             opacity: 0.9;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
         }
 
         .contact-group {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 25px;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
         }
 
         .btn-wa {
-            background: rgba(37, 211, 102, 0.1);
+            background: rgba(37, 211, 102, 0.12);
             color: var(--accent-wa);
-            border: 1px solid rgba(37, 211, 102, 0.3);
-            padding: 16px 32px;
-            border-radius: 8px;
+            border: 1px solid rgba(37, 211, 102, 0.35);
+            padding: 14px 20px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            transition: all 0.3s;
-            min-width: 220px;
             justify-content: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            width: 100%;
+            min-height: 50px;
+            -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
         }
 
-        .btn-wa:hover {
+        .btn-wa:active {
             background: var(--accent-wa);
             color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            transform: scale(0.98);
         }
 
         /* FOOTER */
         footer {
             text-align: center;
-            padding: 35px 0 10px;
+            padding: 30px 16px 10px;
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             letter-spacing: 0.05em;
             border-top: 1px solid var(--border-subtle);
-            margin-top: 50px;
+            margin-top: 35px;
         }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
+        /* MEDIA QUERIES UNTUK TABLET & DESKTOP (LARGE SCREEN ENHANCEMENTS) */
+        @media (min-width: 768px) {
+            .hero {
+                padding: 80px 20px 60px;
             }
 
-            .profile-name {
-                font-size: 1.7rem;
+            .section {
+                padding: 50px 0;
+            }
+
+            .profile-card {
+                padding: 35px 30px;
+            }
+
+            .slider img {
+                width: 140px;
+                height: 140px;
             }
 
             .contact-group {
-                flex-direction: column;
+                flex-direction: row;
             }
 
             .btn-wa {
-                width: 100%;
+                width: auto;
+                min-width: 230px;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+                background: var(--bg-card-hover);
+                border-color: rgba(212, 175, 55, 0.4);
             }
         }
     </style>
@@ -413,196 +420,196 @@
 <body>
 
     <!-- HERO SECTION -->
-    <div class="hero">
+    <header class="hero">
         <div class="container">
             <span class="hero-badge">Executive Security & Advisory</span>
             <h1>Jasa Pengawal Pribadi <br><span class="gold-text">& Debt Collector</span></h1>
             <p>Layanan Profesional, Tepat, dan Berintegritas Tinggi untuk Perlindungan Aset & Keamanan Lapangan</p>
         </div>
-    </div>
+    </header>
 
-    <div class="container">
+    <main class="container">
 
         <!-- PROFIL KONSULTAN -->
         <section class="section">
             <div class="card-luxury profile-card">
-                <div class="profile-name gold-text">M. Fitrah Kasman</div>
+                <h2 class="profile-name gold-text">M. Fitrah Kasman</h2>
                 <div class="profile-title">Debt Collector • Driver • Pengawal Pribadi • Konsultan Lapangan</div>
 
                 <!-- SLIDER DOKUMENTASI -->
                 <div class="slider">
                     <div class="slider-track">
-                        <img src="art1.jpg" alt="Dokumentasi 1">
-                        <img src="art2.jpg" alt="Dokumentasi 2">
-                        <img src="art3.jpg" alt="Dokumentasi 3">
-                        <img src="art4.jpg" alt="Dokumentasi 4">
-                        <img src="art5.jpg" alt="Dokumentasi 5">
-                        <img src="art6.jpg" alt="Dokumentasi 6">
-                        <img src="art7.jpg" alt="Dokumentasi 7">
-                        <img src="art8.jpg" alt="Dokumentasi 8">
-                        <img src="art9.jpg" alt="Dokumentasi 9">
+                        <img src="art1.jpg" alt="Dokumentasi 1" loading="lazy">
+                        <img src="art2.jpg" alt="Dokumentasi 2" loading="lazy">
+                        <img src="art3.jpg" alt="Dokumentasi 3" loading="lazy">
+                        <img src="art4.jpg" alt="Dokumentasi 4" loading="lazy">
+                        <img src="art5.jpg" alt="Dokumentasi 5" loading="lazy">
+                        <img src="art6.jpg" alt="Dokumentasi 6" loading="lazy">
+                        <img src="art7.jpg" alt="Dokumentasi 7" loading="lazy">
+                        <img src="art8.jpg" alt="Dokumentasi 8" loading="lazy">
+                        <img src="art9.jpg" alt="Dokumentasi 9" loading="lazy">
                         
-                        <!-- DUPLIKAT UNTUK ANIMASI SEAMLESS LOOP -->
-                        <img src="art1.jpg" alt="Dokumentasi 1">
-                        <img src="art2.jpg" alt="Dokumentasi 2">
-                        <img src="art3.jpg" alt="Dokumentasi 3">
-                        <img src="art4.jpg" alt="Dokumentasi 4">
-                        <img src="art5.jpg" alt="Dokumentasi 5">
-                        <img src="art6.jpg" alt="Dokumentasi 6">
-                        <img src="art7.jpg" alt="Dokumentasi 7">
-                        <img src="art8.jpg" alt="Dokumentasi 8">
-                        <img src="art9.jpg" alt="Dokumentasi 9">
+                        <!-- DUPLIKAT UNTUK LOOP -->
+                        <img src="art1.jpg" alt="Dokumentasi 1" loading="lazy">
+                        <img src="art2.jpg" alt="Dokumentasi 2" loading="lazy">
+                        <img src="art3.jpg" alt="Dokumentasi 3" loading="lazy">
+                        <img src="art4.jpg" alt="Dokumentasi 4" loading="lazy">
+                        <img src="art5.jpg" alt="Dokumentasi 5" loading="lazy">
+                        <img src="art6.jpg" alt="Dokumentasi 6" loading="lazy">
+                        <img src="art7.jpg" alt="Dokumentasi 7" loading="lazy">
+                        <img src="art8.jpg" alt="Dokumentasi 8" loading="lazy">
+                        <img src="art9.jpg" alt="Dokumentasi 9" loading="lazy">
                     </div>
                 </div>
 
-                <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 700px; margin: 0 auto;">
-                    Pengalaman bertahun-tahun dalam manajemen konflik penagihan serta operasional pengawalan VIP dengan tingkat keberhasilan dan rekam jejak teruji.
+                <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 680px; margin: 0 auto; font-weight: 300;">
+                    Pengalaman bertahun-tahun dalam penanganan negosiasi penagihan serta pengawalan VIP dengan rekam jejak aman dan teruji.
                 </p>
             </div>
         </section>
 
         <!-- LAYANAN KAMI -->
         <section class="section">
-            <h2 class="section-title gold-text">Layanan Prioritas</h2>
+            <h2 class="section-title gold-text">Layanan Utama</h2>
             <div class="grid">
 
                 <div class="card-luxury card">
                     <h3>💰 Pembiayaan Dana</h3>
-                    <p>Fasilitasi dan solusi pembiayaan modal usaha serta proyek skala besar melalui mekanisme yang jelas, cepat, dan terpercaya.</p>
+                    <p>Fasilitasi dan solusi pembiayaan modal usaha serta proyek skala besar melalui sistem yang terarah dan cepat.</p>
                 </div>
 
                 <div class="card-luxury card">
                     <h3>📄 Penagihan Hutang</h3>
-                    <p>Penanganan dan penagihan hutang macet perusahaan maupun perorangan secara taktis, persuasif, dan berlandaskan pendekatan profesional.</p>
+                    <p>Penanganan penagihan hutang macet perorangan maupun perusahaan secara profesional dan efisien.</p>
                 </div>
 
                 <div class="card-luxury card">
                     <h3>⚖️ Konsultan Hukum</h3>
-                    <p>Pendampingan ahli dalam penyelesaian konflik keuangan dan legalitas bisnis untuk mencapai kepastian hukum yang menguntungkan klien.</p>
+                    <p>Pendampingan ahli dalam penyelesaian konflik keuangan dan legalitas bisnis hingga mencapai kesepakatan akhir.</p>
                 </div>
 
                 <div class="card-luxury card">
                     <h3>🚗 Driver & Pengawal VIP</h3>
-                    <p>Proteksi pengawalan jarak dekat (Personal Bodyguard) dan driver terlatih untuk menjamin keamanan mobilitas Anda di dalam maupun luar kota.</p>
+                    <p>Layanan proteksi pribadi (*bodyguard*) dan pengemudi profesional untuk kenyamanan mobilitas Anda.</p>
                 </div>
 
                 <div class="card-luxury card" style="grid-column: 1 / -1;">
                     <h3>📍 Area Operasional</h3>
-                    <p>Siap menangani penugasan mencakup seluruh wilayah <b>Jabodetabek</b> hingga layanan khusus antar-kota/provinsi di <b>Luar Pulau Jawa</b>.</p>
+                    <p>Melayani area <b>Jabodetabek</b> dan penugasan khusus lintas provinsi hingga <b>Luar Pulau Jawa</b>.</p>
                 </div>
 
             </div>
         </section>
 
-        <!-- FITUR BARU: MENGAPA MEMILIH KAMI -->
+        <!-- KEUNGGULAN UTAMA -->
         <section class="section">
-            <h2 class="section-title gold-text">Keunggulan Utama</h2>
-            <div class="card-luxury" style="padding: 35px 30px;">
+            <h2 class="section-title gold-text">Keunggulan</h2>
+            <div class="card-luxury" style="padding: 24px 18px;">
                 <div class="grid-2">
                     <div class="feature-item">
                         <div class="feature-icon">🔒</div>
                         <div>
-                            <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">Privasi & Kerahasiaan 100%</h4>
-                            <p style="color: var(--text-muted); font-size: 0.9rem;">Seluruh data klien, dokumen, dan identitas dijaga ketat dengan kerahasiaan penuh.</p>
+                            <h4 style="color: #fff; font-size: 1rem; margin-bottom: 2px;">Privasi 100% Terjaga</h4>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">Seluruh data dan identitas klien dijamin aman dan rahasia.</p>
                         </div>
                     </div>
 
                     <div class="feature-item">
                         <div class="feature-icon">⚡</div>
                         <div>
-                            <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">Respons Cepat & Siaga 24/7</h4>
-                            <p style="color: var(--text-muted); font-size: 0.9rem;">Tim siap bertindak cepat untuk situasi mendesak dan penanganan darurat di lapangan.</p>
+                            <h4 style="color: #fff; font-size: 1rem; margin-bottom: 2px;">Siaga & Cepat</h4>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">Siap merespons dan bergerak cepat untuk kondisi mendesak.</p>
                         </div>
                     </div>
 
                     <div class="feature-item">
                         <div class="feature-icon">🎯</div>
                         <div>
-                            <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">Pendekatan Taktis & Terukur</h4>
-                            <p style="color: var(--text-muted); font-size: 0.9rem;">Setiap masalah dianalisis secara mendalam untuk hasil operasional yang efektif tanpa keributan.</p>
+                            <h4 style="color: #fff; font-size: 1rem; margin-bottom: 2px;">Pendekatan Taktis</h4>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">Solusi dirancang terukur sesuai kondisi lapangan.</p>
                         </div>
                     </div>
 
                     <div class="feature-item">
                         <div class="feature-icon">📜</div>
                         <div>
-                            <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 4px;">Legalitas & Komunikasi Terarah</h4>
-                            <p style="color: var(--text-muted); font-size: 0.9rem;">Mengutamakan negosiasi profesional yang meminimalisir risiko hukum bagi pihak klien.</p>
+                            <h4 style="color: #fff; font-size: 1rem; margin-bottom: 2px;">Komunikasi Efektif</h4>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">Negosiasi lugas tanpa menimbulkan risiko tambahan.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FITUR BARU: PRINSIP ALUR KERJA -->
+        <!-- ALUR KERJA -->
         <section class="section">
-            <h2 class="section-title gold-text">Alur Kerja Kami</h2>
+            <h2 class="section-title gold-text">Alur Kerja</h2>
             <div class="grid">
                 <div class="card-luxury step-box">
                     <div class="step-number">01</div>
-                    <h4 style="color: #fff; margin-bottom: 8px;">Konsultasi Awal</h4>
-                    <p style="color: var(--text-muted); font-size: 0.85rem;">Diskusi detail mengenai latar belakang masalah dan kebutuhan klien.</p>
+                    <h4 style="color: #fff; font-size: 0.95rem; margin-bottom: 4px;">Konsultasi</h4>
+                    <p style="color: var(--text-muted); font-size: 0.8rem;">Diskusi kasus dan target hasil yang diharapkan.</p>
                 </div>
 
                 <div class="card-luxury step-box">
                     <div class="step-number">02</div>
-                    <h4 style="color: #fff; margin-bottom: 8px;">Analisis & Strategi</h4>
-                    <p style="color: var(--text-muted); font-size: 0.85rem;">Penyusunan rencana operasional taktis yang sesuai standar keamanan/hukum.</p>
+                    <h4 style="color: #fff; font-size: 0.95rem; margin-bottom: 4px;">Strategi</h4>
+                    <p style="color: var(--text-muted); font-size: 0.8rem;">Penyusunan rencana penanganan operasional taktis.</p>
                 </div>
 
                 <div class="card-luxury step-box">
                     <div class="step-number">03</div>
-                    <h4 style="color: #fff; margin-bottom: 8px;">Eksekusi Lapangan</h4>
-                    <p style="color: var(--text-muted); font-size: 0.85rem;">Penanganan atau pengawalan langsung oleh tim profesional berpengalaman.</p>
+                    <h4 style="color: #fff; font-size: 0.95rem; margin-bottom: 4px;">Eksekusi</h4>
+                    <p style="color: var(--text-muted); font-size: 0.8rem;">Penanganan langsung secara profesional di lapangan.</p>
                 </div>
 
                 <div class="card-luxury step-box">
                     <div class="step-number">04</div>
-                    <h4 style="color: #fff; margin-bottom: 8px;">Pelaporan Tuntas</h4>
-                    <p style="color: var(--text-muted); font-size: 0.85rem;">Laporan hasil akhir pekerjaan secara transparan hingga selesai.</p>
+                    <h4 style="color: #fff; font-size: 0.95rem; margin-bottom: 4px;">Selesai</h4>
+                    <p style="color: var(--text-muted); font-size: 0.8rem;">Pelaporan tuntas dan penyelesaian tugas.</p>
                 </div>
             </div>
         </section>
 
-        <!-- UNIT USAHA DIBAGI JADI 2 KATEGORI -->
+        <!-- UNIT BISNIS PENDUKUNG -->
         <section class="section">
-            <h2 class="section-title gold-text">Unit Bisnis Pendukung</h2>
+            <h2 class="section-title gold-text">Bisnis Lainnya</h2>
             <div class="grid-2">
 
-                <!-- BISNIS 1: AIR IZAURA -->
+                <!-- AIR IZAURA -->
                 <div class="card-luxury promo-box">
                     <div>
-                        <h3 class="gold-text" style="font-size: 1.4rem; margin-bottom: 6px;">Air Kesehatan IZAURA</h3>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300;">
-                            Air minum alkali bermutu tinggi untuk kesehatan tubuh, menetralisir racun, dan menjaga stamina harian.
+                        <h3 class="gold-text" style="font-size: 1.25rem; margin-bottom: 4px;">Air Kesehatan IZAURA</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; font-weight: 300;">
+                            Air minum alkali bermutu tinggi untuk kesehatan, melancarkan metabolisme, dan menjaga stamina harian.
                         </p>
 
                         <div class="promo-gallery">
-                            <img src="photo_2026-03-30_23-41-25.jpg" alt="Air Izaura 1">
-                            <img src="photo_2026-03-30_23-41-48.jpg" alt="Air Izaura 2">
-                            <img src="photo_2026-03-30_23-41-52.jpg" alt="Air Izaura 3">
+                            <img src="photo_2026-03-30_23-41-25.jpg" alt="Izaura 1" loading="lazy">
+                            <img src="photo_2026-03-30_23-41-48.jpg" alt="Izaura 2" loading="lazy">
+                            <img src="photo_2026-03-30_23-41-52.jpg" alt="Izaura 3" loading="lazy">
                         </div>
                     </div>
 
-                    <a href="https://wa.me/6281281198570?text=Halo,%20saya%20ingin%20order%20Air%20IZAURA" class="btn-gold" target="_blank">Pesan Air IZAURA</a>
+                    <a href="https://wa.me/6281281198570?text=Halo,%20saya%20ingin%20order%20Air%20IZAURA" class="btn-gold" target="_blank" rel="noopener">Pesan Air IZAURA</a>
                 </div>
 
-                <!-- BISNIS 2: LAUNDRY -->
+                <!-- LAUNDRY -->
                 <div class="card-luxury promo-box">
                     <div>
-                        <h3 class="gold-text" style="font-size: 1.4rem; margin-bottom: 6px;">Laundry Self Service</h3>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 300;">
-                            Layanan cuci cepat, bersih, dan higienis dengan mesin modern untuk kenyamanan pakaian Anda.
+                        <h3 class="gold-text" style="font-size: 1.25rem; margin-bottom: 4px;">Laundry Self Service</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; font-weight: 300;">
+                            Layanan cuci cepat, bersih, dan higienis dengan peralatan mesin modern.
                         </p>
 
                         <div class="promo-gallery">
-                            <img src="photo_2026-03-30_23-50-00.jpg" alt="Laundry 1">
-                            <img src="photo_2026-03-30_23-50-03.jpg" alt="Laundry 2">
-                            <img src="photo_2026-03-30_23-49-56.jpg" alt="Laundry 3">
+                            <img src="photo_2026-03-30_23-50-00.jpg" alt="Laundry 1" loading="lazy">
+                            <img src="photo_2026-03-30_23-50-03.jpg" alt="Laundry 2" loading="lazy">
+                            <img src="photo_2026-03-30_23-49-56.jpg" alt="Laundry 3" loading="lazy">
                         </div>
                     </div>
 
-                    <a href="https://wa.me/6281281198570?text=Halo,%20saya%20ingin%20tanya%20layanan%20Laundry" class="btn-gold" target="_blank">Order Laundry</a>
+                    <a href="https://wa.me/6281281198570?text=Halo,%20saya%20ingin%20tanya%20layanan%20Laundry" class="btn-gold" target="_blank" rel="noopener">Order Laundry</a>
                 </div>
 
             </div>
@@ -611,20 +618,20 @@
         <!-- KONTAK -->
         <section class="section">
             <h2 class="section-title gold-text">Konsultasi Privat</h2>
-            <p style="text-align: center; color: var(--text-muted); font-weight: 300; margin-bottom: 10px;">
-                Hubungi saluran komunikasi langsung di bawah untuk diskusi kerahasiaan tinggi
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem; font-weight: 300;">
+                Hubungi kontak langsung di bawah untuk diskusi privat
             </p>
             <div class="contact-group">
-                <a href="https://wa.me/6281281198570" class="btn-wa" target="_blank">
+                <a href="https://wa.me/6281281198570" class="btn-wa" target="_blank" rel="noopener">
                     💬 Direct WhatsApp 01
                 </a>
-                <a href="https://wa.me/6281314212585" class="btn-wa" target="_blank">
+                <a href="https://wa.me/6281314212585" class="btn-wa" target="_blank" rel="noopener">
                     💬 Direct WhatsApp 02
                 </a>
             </div>
         </section>
 
-    </div>
+    </main>
 
     <!-- FOOTER -->
     <footer>
